@@ -55,13 +55,13 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`
 ╔════════════════════════════════════════╗
 ║   TOTP Authentication System Started   ║
 ╚════════════════════════════════════════╝
   
-  Server running on: http://localhost:${PORT}
+  Server running on: http://0.0.0.0:${PORT}
   Environment: ${process.env.NODE_ENV || 'development'}
   
   API Endpoints:
