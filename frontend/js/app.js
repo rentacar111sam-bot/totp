@@ -1,7 +1,7 @@
 // Frontend JavaScript - API bilan aloqa va UI boshqaruvi
 const API_BASE_URL = window.location.hostname === 'localhost'
   ? 'http://localhost:5000/api'
-  : 'https://totp-backend.onrender.com/api';
+  : 'http://totp-backend.onrender.com/api';
 
 // Store authentication token in localStorage
 let authToken = localStorage.getItem('authToken');
