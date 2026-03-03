@@ -8,10 +8,4 @@
   status = 200
 
 [context.production.environment]
-  REACT_APP_API_URL = "https://your-backend-url.com/api"
-
-[context.deploy-preview.environment]
-  REACT_APP_API_URL = "http://localhost:5000/api"
-
-[context.branch-deploy.environment]
-  REACT_APP_API_URL = "http://localhost:5000/api"
+  REACT_APP_API_URL = "https://totp-backend.onrender.com/api"

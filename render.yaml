@@ -18,26 +18,4 @@ services:
       - key: TOTP_WINDOW
         value: 2
       - key: FRONTEND_URL
-        fromService:
-          name: totp-frontend
-          property: url
-
-  - type: static
-    name: totp-frontend
-    staticPublishPath: ./frontend
-    buildCommand: echo "Frontend ready"
-    routes:
-      - path: /
-        destination: /index.html
-      - path: /register.html
-        destination: /register.html
-      - path: /login.html
-        destination: /login.html
-      - path: /dashboard.html
-        destination: /dashboard.html
-      - path: /setup-2fa.html
-        destination: /setup-2fa.html
-      - path: /css/*
-        destination: /css/:path
-      - path: /js/*
-        destination: /js/:path
+        value: https://totp-frontend.onrender.com
