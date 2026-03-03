@@ -1,0 +1,17 @@
+[build]
+  command = "echo 'Frontend ready'"
+  publish = "frontend"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  REACT_APP_API_URL = "https://your-backend-url.com/api"
+
+[context.deploy-preview.environment]
+  REACT_APP_API_URL = "http://localhost:5000/api"
+
+[context.branch-deploy.environment]
+  REACT_APP_API_URL = "http://localhost:5000/api"

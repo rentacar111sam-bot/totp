@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2FA Sozlash - TOTP Autentifikatsiya Tizimi</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔐 Ikki Faktorli Autentifikatsiyani Sozlash</h1>
+      <p class="subtitle">Hisobingizni 2FA bilan xavfsiz qiling</p>
+
+      <div id="alert" class="alert"></div>
+
+      <form id="setupForm" onsubmit="handleSetup2FA(event)">
+        <div class="instructions">
+          <strong>1-Bosqich: Sirni Yaratish</strong>
+          <p style="margin-top: 10px">
+            Quyidagi tugmani bosing yangi TOTP sirini yaratish uchun. Keyin QR kodini skanerlang yoki sirni qo'lda autentifikator ilovasiga kiriting.
+          </p>
+        </div>
+
+        <button type="submit">Sirni Yaratish va QR Kodni Yaratish</button>
+      </form>
+
+      <div id="confirmForm" style="display: none">
+        <div class="instructions">
+          <strong>2-Bosqich: Autentifikatorga Qo'shish</strong>
+          <p style="margin-top: 10px">
+            Quyidagi QR kodini Google Authenticator, Microsoft Authenticator yoki boshqa TOTP ilovasiga skanerlang. Shuningdek, sirni qo'lda kiritishingiz mumkin.
+          </p>
+        </div>
+
+        <div class="qr-section">
+          <img id="qrCodeImage" class="qr-code" alt="QR Kod" />
+        </div>
+
+        <div>
+          <label>Qo'lda Kiritish (agar QR kod ishlamasa):</label>
+          <div class="secret-key">
+            <div class="secret-key-label">Sirni Kalit:</div>
+            <div id="secretKey" style="font-size: 16px; letter-spacing: 2px; word-break: break-all">
+              -
+            </div>
+          </div>
+          <button type="button" class="copy-btn" onclick="copyToClipboard('secretKey')">
+            📋 Sirni Nusxalash
+          </button>
+        </div>
+
+        <div class="instructions" style="margin-top: 30px">
+          <strong>3-Bosqich: Kodni Tekshirish</strong>
+          <p style="margin-top: 10px">
+            Autentifikator ilovasidan 6 raqamli kodni kiriting sozlashni tasdiqlash uchun.
+          </p>
+        </div>
+
+        <form onsubmit="handleConfirm2FA(event)">
+          <div class="form-group">
+            <label for="confirmTotpCode">Autentifikatordan 6 Raqamli Kod</label>
+            <input
+              type="number"
+              id="confirmTotpCode"
+              placeholder="000000"
+              required
+              min="0"
+              max="999999"
+              inputmode="numeric"
+            />
+          </div>
+
+          <button type="submit">2FA ni Tasdiqlash va Yoqish</button>
+        </form>
+
+        <button
+          type="button"
+          class="secondary"
+          onclick="document.getElementById('setupForm').style.display='block'; document.getElementById('confirmForm').style.display='none';"
+        >
+          ← Qayta Boshlash
+        </button>
+      </div>
+
+      <button onclick="window.location.href='dashboard.html'" class="secondary" style="margin-top: 20px">
+        ← Bosh Panelga
+      </button>
+
+      <div class="instructions" style="margin-top: 30px">
+        <strong>Tavsiya Etilgan Autentifikator Ilovalar:</strong>
+        <ul style="margin-left: 20px; margin-top: 10px">
+          <li>Google Authenticator (iOS, Android)</li>
+          <li>Microsoft Authenticator (iOS, Android)</li>
+          <li>Authy (iOS, Android, Desktop)</li>
+          <li>FreeOTP (iOS, Android)</li>
+        </ul>
+      </div>
+
+      <div class="instructions">
+        <strong>Muhim:</strong>
+        <p style="margin-top: 10px">
+          Sirni kalit xavfsiz joyda saqlang. Agar autentifikator ilovasiga kirish imkoniyatini yo'qotib qo'ysangiz, hisobingizga kira olmaysiz.
+        </p>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

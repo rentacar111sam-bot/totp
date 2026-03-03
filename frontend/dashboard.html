@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bosh Panel - TOTP Autentifikatsiya Tizimi</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>📊 Bosh Panel</h1>
+      <p class="subtitle">Hisobingizga xush kelibsiz</p>
+
+      <div id="alert" class="alert"></div>
+
+      <div class="user-info">
+        <p>
+          <strong>Foydalanuvchi Nomi:</strong>
+          <span id="displayUsername">-</span>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <span id="displayEmail">-</span>
+        </p>
+        <p>
+          <strong>A'zo Sifatida Qo'shilgan:</strong>
+          <span id="displayCreatedAt">-</span>
+        </p>
+      </div>
+
+      <div class="user-info">
+        <p>
+          <strong>Ikki Faktorli Autentifikatsiya (2FA):</strong>
+          <span id="totpStatusBadge" class="status-badge disabled">O'chirilgan</span>
+        </p>
+        <p style="font-size: 12px; color: #666; margin-top: 10px">
+          Ikki faktorli autentifikatsiya hisobingizga qo'shimcha xavfsizlik qatlamini qo'shadi.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 20px">
+        <button id="setupBtn" onclick="window.location.href='setup-2fa.html'" style="display: none">
+          🔐 2FA ni Yoqish
+        </button>
+        <button id="disableBtn" onclick="handleDisable2FA()" class="danger" style="display: none">
+          ⚠️ 2FA ni O'chirish
+        </button>
+      </div>
+
+      <div style="margin-top: 30px">
+        <button onclick="logout()" class="secondary">🚪 Chiqish</button>
+      </div>
+
+      <div class="instructions" style="margin-top: 30px">
+        <strong>Hisob Xavfsizligi Maslahatlar:</strong>
+        <ul style="margin-left: 20px; margin-top: 10px">
+          <li>Hisobingizni qo'shimcha xavfsizlik qatlamiga ega qilish uchun 2FA ni yoqing</li>
+          <li>Kuchli va noyob parol ishlating</li>
+          <li>Autentifikatsiya kodlarini hech kimga bermang</li>
+          <li>Autentifikator ilovasini zaxiralang</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

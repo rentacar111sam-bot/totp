@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: totp-backend
+    env: node
+    plan: free
+    buildCommand: npm install --prefix backend
+    startCommand: npm start --prefix backend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRE
+        value: 7d
+      - key: TOTP_WINDOW
+        value: 2
+      - key: FRONTEND_URL
+        value: https://your-frontend-url.onrender.com
+
+  - type: static
+    name: totp-frontend
+    staticPublishPath: ./frontend
+    buildCommand: echo "Frontend ready"
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://your-backend-url.onrender.com/api

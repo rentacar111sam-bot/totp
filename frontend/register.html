@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ro'yxatdan O'tish - TOTP Autentifikatsiya Tizimi</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>📝 Hisob Yaratish</h1>
+      <p class="subtitle">TOTP Autentifikatsiya Tizimine ro'yxatdan o'tish</p>
+
+      <div id="alert" class="alert"></div>
+
+      <form id="registerForm" onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label for="username">Foydalanuvchi Nomi</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Foydalanuvchi nomini kiriting"
+            required
+            minlength="3"
+            maxlength="50"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Manzili</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email manzilingizni kiriting"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Parol</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Parol kiriting (kamida 6 ta belgi)"
+            required
+            minlength="6"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Parolni Tasdiqlash</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Parolni qayta kiriting"
+            required
+            minlength="6"
+          />
+        </div>
+
+        <button type="submit">Hisob Yaratish</button>
+      </form>
+
+      <div class="nav-links">
+        Allaqachon hisobingiz bormi? <a href="login.html">Bu yerdan kiring</a>
+      </div>
+
+      <div class="instructions" style="margin-top: 30px">
+        <strong>Parol Talablari:</strong>
+        <ul style="margin-left: 20px; margin-top: 10px">
+          <li>Kamida 6 ta belgi</li>
+          <li>Katta va kichik harflarni aralash</li>
+          <li>Raqam va maxsus belgilarni qo'shish xavfsizlik uchun</li>
+        </ul>
+      </div>
+
+      <button onclick="window.location.href='index.html'" class="secondary" style="margin-top: 20px">
+        ← Bosh Sahifaga
+      </button>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

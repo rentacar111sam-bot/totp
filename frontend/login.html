@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kirish - TOTP Autentifikatsiya Tizimi</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔑 Hisobga Kirish</h1>
+      <p class="subtitle">Hisobingizga kiring</p>
+
+      <div id="alert" class="alert"></div>
+
+      <form id="passwordForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="username">Foydalanuvchi Nomi</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Foydalanuvchi nomini kiriting"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Parol</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Parolni kiriting"
+            required
+          />
+        </div>
+
+        <button type="submit">Kirish</button>
+      </form>
+
+      <form id="totpForm" onsubmit="handleVerifyTOTP(event)" style="display: none">
+        <div class="instructions">
+          <strong>Ikki Faktorli Autentifikatsiya Talab Qilinadi</strong>
+          <p style="margin-top: 10px">
+            Hisobingizda 2FA yoqilgan. Iltimos, autentifikator ilovasidan 6 raqamli kodni kiriting.
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="totpCode">6 Raqamli Kod</label>
+          <input
+            type="number"
+            id="totpCode"
+            placeholder="000000"
+            required
+            min="0"
+            max="999999"
+            inputmode="numeric"
+          />
+        </div>
+
+        <button type="submit">Kodni Tekshirish</button>
+
+        <button
+          type="button"
+          class="secondary"
+          onclick="document.getElementById('passwordForm').style.display='block'; document.getElementById('totpForm').style.display='none';"
+        >
+          ← Orqaga
+        </button>
+      </form>
+
+      <div class="nav-links">
+        Hisobingiz yo'qmi? <a href="register.html">Bu yerdan ro'yxatdan o'ting</a>
+      </div>
+
+      <div class="instructions" style="margin-top: 30px">
+        <strong>Kirish Jarayoni:</strong>
+        <ol style="margin-left: 20px; margin-top: 10px">
+          <li>Foydalanuvchi nomini va parolni kiriting</li>
+          <li>Agar 2FA yoqilgan bo'lsa, autentifikatordan 6 raqamli kodni kiriting</li>
+          <li>Siz kirilib, bosh panelga yo'naltirilasiz</li>
+        </ol>
+      </div>
+
+      <button onclick="window.location.href='index.html'" class="secondary" style="margin-top: 20px">
+        ← Bosh Sahifaga
+      </button>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
